@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="{{ webaddress }}files/css/styleaccount.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<body class="text-center" style="background-color:#333;">
+     <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <a href="{{ webaddress }}" class="btn btn-primary my-2 my-sm-0 homeBtn" style="width:150px; height:40px;"><label>Accueil</label></a>
+
+        <ul class="list-group mb-3 tableau" style="width:1600px">
+            {% for info in items %}
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">{{info.stringTotal}}</h6>
+                        <a href="{{ webaddress }}deleteItem/{{ info.itemName }}" class="btn btn-primary my-2 my-sm-0 nextBtn" style="width:150px; height:40px; left:90%; bottom:6%"><label>Supprimer item</label></a>
+                    </div>
+                </li>    
+            {% endfor %}
+        </ul>     
+    </form>
+  </body>

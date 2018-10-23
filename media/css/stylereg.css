@@ -1,0 +1,11 @@
+body {
+  position: relative;
+  top: 250px;
+  width: 350px;
+  margin: auto;
+  left: 40%;
+  }
+
+label {
+  color:white;
+}

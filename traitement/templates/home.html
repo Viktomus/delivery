@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="{{ webaddress }}files/css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="{{ webaddress}}files/scripts/homescript.js"></script>
+
+<body style="background-color:#333;">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}	
+        <a href="{{ webaddress }}{{ logredirect }}" class="aOthers btn btn-primary my-2 my-sm-0" style="width:150px; height:40px;"><label>{{ isConnected }}</label></a>
+        {{ form.search }}
+        <button class="btn btn-outline-success my-2 my-sm-0 searchbutton" type="submit" style="width:150px; height:40px;">Rechercher</button>
+
+        <main role="main" class="container searchResult" style="width:1000px;">
+        {% if results is not None%}
+        {% for item in results %}
+            <div class="jumbotron" style="padding: 2.8em 1.5em;">
+                <a style="color:blue;" onclick="SelectQuantity('{{ item.itemNameLower }}');"><h1 style="margin-top:-40px;">{{item.itemName}}</h1></a>
+
+                <div id="SelectionDiv{{item.itemNameLower}}" class="SelectionDiv" style="display:none;">
+                    <input id="Input{{item.itemNameLower}}" class="form-control" id="selectedQuantity" placeholder="Quantité" type="number">
+                    <a class="btn btn-lg btn-primary confirmBtn" onclick="ConfirmQuantity('{{ item.itemNameLower }}');">OK</a>
+                </div>
+
+                <img src="{{ item.photoAddress }}" alt="Smiley face" height="120px" width="120px">
+                <h5 style="margin-left:150px;margin-top:-100px">{{item.desc}}</h5>
+                <h4 class="price" style="margin-left: 85%;">{{item.price}} Piksous</h4>
+                <h5 class="stock" style="margin-left: 87%;margin-bottom: -4%;color:{{item.stockColor}}">{{item.stock}} en stock</h5>
+            </div>
+        {% endfor %}
+
+        {% endif %}
+        
+        {% if results is None %}
+        {% for item in allItems %}
+            <div class="jumbotron" style="padding: 2.8em 1.5em;">
+                <a style="color:blue;" onclick="SelectQuantity('{{ item.itemNameLower }}');"><h1 style="margin-top:-40px;">{{item.itemName}}</h1></a>
+
+                <div id="SelectionDiv{{item.itemNameLower}}" class="SelectionDiv" style="display:none;">
+                    <input id="Input{{item.itemNameLower}}" class="form-control" id="selectedQuantity" placeholder="Quantité" type="number">
+                    <a class="btn btn-lg btn-primary confirmBtn" onclick="ConfirmQuantity('{{ item.itemNameLower }}');">OK</a>
+                </div>
+
+                <img src="{{ item.photoAddress }}" alt="Smiley face" height="120px" width="120px">
+                <h5 style="margin-left:150px;margin-top:-100px">{{item.desc}}</h5>
+                <h4 class="price" style="margin-left: 85%;">{{item.price}} Piksous</h4>
+                <h5 class="stock" style="margin-left: 87%;margin-bottom: -4%;color:{{item.stockColor}}">{{item.stock}} en stock</h5>
+            </div>
+        {% endfor %}
+        {% endif %}
+        </main>
+    </form>
+</body>

@@ -1,0 +1,55 @@
+body {
+  position: relative;
+  width: 350px;
+  margin: auto;
+  left: 40%;
+  }
+
+  .unlogBtn {
+    position: absolute;
+    left: 270%;
+    top: 60px;
+    z-index: 4;
+  }
+
+  .homeBtn {
+    position: absolute;
+    left: 270%;
+    top: 30%;
+    z-index: 4;
+  }
+
+  .createBtn {
+    position: absolute;
+    left: 270%;
+    top: 120px;
+  }
+
+  .listBtn {
+    position: absolute;
+    left: 270%;
+    top: 180px;
+  }
+
+  .tableau {
+    margin-top: 25px;
+    position: relative;
+  }
+
+  .tableau__{
+    left:-200%;
+    position: absolute;
+  }
+
+  .tableau_ {
+    position: relative;
+  }
+
+  .nextBtn {
+    position: absolute;
+    z-index: 4;
+  }
+
+label {
+  color:white;
+}

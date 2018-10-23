@@ -1,0 +1,44 @@
+body {
+  position: relative;
+  width: 350px;
+  margin: auto;
+  left: 35%;
+  }
+
+.searchbutton {
+  position: absolute;
+  left: 150%;
+  top: 0%;
+}
+
+.searchResult {
+  position: relative;
+  margin-top: 10%;
+  right:70%;
+}
+
+.price {
+  color:black;
+}
+
+.aOthers {
+  position: absolute;
+  left: -50%;
+}
+
+.SelectionDiv {
+  width: 10%;
+  margin-bottom: 2%;
+  position: relative;
+  z-index: 4;
+}
+
+.confirmBtn {
+  position: absolute;
+  margin-left: 110%;
+  margin-top: -50%;
+}
+
+label {
+  color:white;
+}
